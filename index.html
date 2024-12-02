@@ -38,22 +38,31 @@
   <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth-compat.js"></script>
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyAzcwgZuLA7dO9g4sQhXQVTUgCo0M8m2qM",
-      authDomain: "grocerylist-91956.firebaseapp.com",
-      databaseURL: "https://grocerylist-91956.firebaseio.com",
-      projectId: "grocerylist-91956",
-      storageBucket: "grocerylist-91956.appspot.com",
-      messagingSenderId: "813812426276",
-      appId: "1:813812426276:web:93e5897af12892ff78dab1",
-      measurementId: "G-VZ83BTR72T"
-    }; 
+      apiKey: "AIzaSyBMDTAYpyTVpXuJ7WZYe4k4ST1nOz214sw",
+      authDomain: "database225-beea1.firebaseapp.com",
+      projectId: "database225-beea1",
+      storageBucket: "database225-beea1.firebasestorage.app",
+      messagingSenderId: "417526537882",
+      appId: "1:417526537882:web:78bfc0c1be09ce7f42c923",
+      measurementId: "G-PF89NZ4ZL4"
+    };
+
     // Initialize Firebase
       const firebaseApp = firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
       const auth = firebaseApp.auth();
 
     // Save the list to database
+    $('#save').click(function() {
+      $(this).text('Saving.........');
 
+      $('li').each(function(){
+        // add each item!!
+        var value = $(this).text();
+        console.log("the item is " + value);
+        db.collection('grocerylist').add({item: value});
+      });
+    });
 
   </script>
 
